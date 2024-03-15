@@ -1,0 +1,28 @@
+{
+    "loans": [
+        {
+            "id": 1,
+            "name": "Seguro de vida con Nequi Costo mensual [$1450]",
+            "description": "Con este seguro podrás tener la plata de tu préstamo de una.",
+            "state": "activo"
+        },
+        {
+            "id": 2,
+            "name": "Préstamo para vivienda",
+            "description": "Obtén el financiamiento que necesitas para comprar tu casa.",
+            "state": "activo"
+        },
+        {
+            "id": 3,
+            "name": "Préstamo para vehículo",
+            "description": "Financia la compra de tu nuevo vehículo con nuestras excelentes tasas.",
+            "state": "inactivo"
+        },
+        {
+            "id": 4,
+            "name": "Préstamo para educación",
+            "description": "Invierte en tu futuro con nuestro préstamo para estudios.",
+            "state": "en proceso"
+        }
+    ]
+}
