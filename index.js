@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const app = express();
 const port = 5000;
+const loans = require('./db.js').loans;
 
 app.use(session({ secret: 'your secret key', resave: false, saveUninitialized: true }));
 app.use(cors());
@@ -33,7 +34,7 @@ app.get('/loans', (req, res) => {
     const { search } = req.query;
     const data = readData();
 
-    let filteredData = data.loans;
+    let filteredData = loans;
 
     if (search) {
         const lowerCaseSearch = search.toLowerCase();
