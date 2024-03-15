@@ -16,7 +16,8 @@ app.use(express.json());
 
 const readData = () => {
     try {
-        const data = fs.readFileSync("./db.json");
+        
+        const data = fs.readFileSync("./public/db.json");
         return JSON.parse(data);
     } catch (err) {
         console.error(err);
