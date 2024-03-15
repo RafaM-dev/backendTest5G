@@ -2,12 +2,15 @@ const fs = require("fs");
 const express = require("express");
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const cors = require('cors');
 
 const app = express();
 const port = 5000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: 'your secret key', resave: false, saveUninitialized: true }));
+app.use(cors());
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(express.json());
 
