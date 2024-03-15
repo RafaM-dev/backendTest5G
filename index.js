@@ -2,22 +2,25 @@ const fs = require("fs");
 const express = require("express");
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const path = require("path");
 
 const app = express();
 const port = 5000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'your secret key', resave: false, saveUninitialized: true }));
 
 app.use(express.json());
 
+const dbPath = path.resolve(__dirname, 'db.json');
+
 const readData = () => {
     try {
-        const data = fs.readFileSync("./db.json");
-        return JSON.parse(data);
+        const data = fs.readFileSync(dbPath);
+        const parsedData = JSON.parse(data);
+        return Array.isArray(parsedData.loans) ? parsedData : { loans: [] };
     } catch (err) {
         console.error(err);
-        return [];
+        return { loans: [] };
     }
 }
 
@@ -40,6 +43,7 @@ app.get('/loans', (req, res) => {
     }
     res.json(filteredData);
 });
+
 
 app.post('/login', (req, res) => {
     const { cedula } = req.body;
